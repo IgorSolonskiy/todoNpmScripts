@@ -7,13 +7,9 @@ const changeTasks = (event) => {
     arrayTasks.forEach((item) => {
       if (item.id === event.target.dataset.id) {
         if (item.done === true) {
-          changeTasksList({ done: false }, item.id)
-            .then((response) => response.json())
-            .then(() => renderElem());
+          changeTasksList({ done: false }, item.id).then(() => renderElem());
         } else {
-          changeTasksList({ done: true }, item.id)
-            .then((response) => response.json())
-            .then(() => renderElem());
+          changeTasksList({ done: true }, item.id).then(() => renderElem());
         }
       }
     });

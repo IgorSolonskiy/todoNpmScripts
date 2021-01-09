@@ -11,12 +11,10 @@ const createTasks = () => {
     createDate: new Date().toISOString(),
   };
 
-  createTasksList(tasksData)
-    .then((response) => response.json())
-    .then(() => {
-      inputTextElem.value = "";
-      renderElem();
-    });
+  createTasksList(tasksData).then(() => {
+    inputTextElem.value = "";
+    renderElem();
+  });
 };
 export function initCreateTasks() {
   const btnElem = document.querySelector(".create-task-btn");
