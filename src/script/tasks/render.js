@@ -3,7 +3,7 @@ import { initChangeTasks } from "./onChangeTasks.js";
 import { initDeleteButton } from "./onDeleteTasks.js";
 import { getTasksList } from "../gateway/tasksGateway.js";
 
-export function renderElem() {
+export const renderElem = () => {
   getTasksList().then((arrayTasks) => {
     const listElem = document.querySelector(".list");
 
@@ -44,4 +44,4 @@ export function renderElem() {
     initCreateTasks();
     initDeleteButton();
   });
-}
+};

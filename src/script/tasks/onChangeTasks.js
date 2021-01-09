@@ -1,7 +1,7 @@
 import { renderElem } from "./render.js";
 import { getTasksList, changeTasksList } from "../gateway/tasksGateway.js";
 
-function changeTasks(event) {
+const changeTasks = (event) => {
   event.target.closest(".list-item").classList.toggle("list-item__done");
   getTasksList().then((arrayTasks) => {
     arrayTasks.forEach((item) => {
@@ -18,7 +18,7 @@ function changeTasks(event) {
       }
     });
   });
-}
+};
 
 export const initChangeTasks = () => {
   const checkboxElem = Array.from(

@@ -1,7 +1,7 @@
 import { renderElem } from "./render.js";
 import { createTasksList } from "../gateway/tasksGateway.js";
 
-export function createTasks() {
+const createTasks = () => {
   const inputTextElem = document.querySelector(".task-input");
   if (!inputTextElem.value) return;
 
@@ -17,7 +17,7 @@ export function createTasks() {
       inputTextElem.value = "";
       renderElem();
     });
-}
+};
 export function initCreateTasks() {
   const btnElem = document.querySelector(".create-task-btn");
   btnElem.addEventListener("click", createTasks);
