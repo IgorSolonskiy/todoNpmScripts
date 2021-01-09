@@ -1,5 +1,5 @@
 import { renderElem } from "./render.js";
-import { createTasksList } from "./tasksGateway.js";
+import { createTasksList } from "../gateway/tasksGateway.js";
 
 export function createTasks() {
   const inputTextElem = document.querySelector(".task-input");

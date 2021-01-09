@@ -1,7 +1,7 @@
 import { initCreateTasks } from "./onCreateTasks.js";
 import { initChangeTasks } from "./onChangeTasks.js";
 import { initDeleteButton } from "./onDeleteTasks.js";
-import { getTasksList } from "./tasksGateway.js";
+import { getTasksList } from "../gateway/tasksGateway.js";
 
 export function renderElem() {
   getTasksList().then((arrayTasks) => {

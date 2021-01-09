@@ -1,5 +1,5 @@
 import { renderElem } from "./render.js";
-import { getTasksList, changeTasksList } from "./tasksGateway.js";
+import { getTasksList, changeTasksList } from "../gateway/tasksGateway.js";
 
 function changeTasks(event) {
   event.target.closest(".list-item").classList.toggle("list-item__done");

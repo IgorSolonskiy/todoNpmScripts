@@ -1,4 +1,4 @@
-import { deleteTasksList } from "./tasksGateway.js";
+import { deleteTasksList } from "../gateway/tasksGateway.js";
 import { renderElem } from "./render.js";
 
 const clickDeleteTasks = (event) => {
