@@ -5,13 +5,11 @@ const changeTasks = (event) => {
   event.target.closest(".list-item").classList.toggle("list-item__done");
   getTasksList().then((arrayTasks) => {
     arrayTasks.forEach((item) => {
-      if (item.id === event.target.dataset.id) {
-        if (item.done === true) {
-          changeTasksList({ done: false }, item.id).then(() => renderElem());
-        } else {
-          changeTasksList({ done: true }, item.id).then(() => renderElem());
-        }
-      }
+      if (item.id !== event.target.dataset.id) return;
+
+      item.done === true
+        ? changeTasksList({ done: false }, item.id).then(() => renderElem())
+        : changeTasksList({ done: true }, item.id).then(() => renderElem());
     });
   });
 };

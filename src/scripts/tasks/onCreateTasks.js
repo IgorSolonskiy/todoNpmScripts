@@ -3,6 +3,7 @@ import { createTasksList } from "../gateway/tasksGateway.js";
 
 const createTasks = () => {
   const inputTextElem = document.querySelector(".task-input");
+
   if (!inputTextElem.value) return;
 
   const tasksData = {

@@ -1,10 +1,8 @@
 import { deleteTasksList } from "../gateway/tasksGateway.js";
 import { renderElem } from "./render.js";
 
-const clickDeleteTasks = (event) => {
-  const idItem = event.target.dataset.id;
-  deleteTasksList(idItem).then(() => renderElem());
-};
+const clickDeleteTasks = (event) =>
+  deleteTasksList(event.target.dataset.id).then(() => renderElem());
 
 export const initDeleteButton = () => {
   const btnArrayElem = Array.from(
