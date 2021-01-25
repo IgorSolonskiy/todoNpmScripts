@@ -9,17 +9,22 @@
     "build:styles": "sass src/styles/index.scss dist/styles.css",
     "clean": "shx rm -rf ./dist",
     "copy:html": "shx cp ./src/index.html ./dist",
-    "copy:scripts": "shx cp -r ./src/scripts ./dist",
+    "copy:scripts": "babel ./src/scripts --out-dir=./dist/scripts",
     "build": "npm-run-all clean build:styles copy:*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "sass": "^1.32.5",
     "shx": "^0.3.3"
+  },
+  "dependencies": {
+    "core-js": "^3.8.3"
   }
 }
