@@ -8,7 +8,7 @@ const changeTasks = async (event) => {
     const arrayTasks = await getTasksList();
     const task = arrayTasks.find((item) => item.id === event.target.dataset.id);
 
-    await changeTasksList({ done: task.done ? false : true }, task.id);
+    await changeTasksList({ done: task.done !== 1 }, task.id);
     renderList();
   } catch (err) {
     alert(err.message);
