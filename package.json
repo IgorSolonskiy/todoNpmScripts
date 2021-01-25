@@ -9,8 +9,8 @@
     "build:styles": "sass src/styles/index.scss dist/styles.css",
     "clean": "shx rm -rf ./dist",
     "copy:html": "shx cp ./src/index.html ./dist",
-    "copy:scripts": "babel ./src/scripts --out-dir=./dist/scripts",
-    "build": "npm-run-all clean build:styles copy:*"
+    "build:scripts": "babel ./src --out-dir=./dist",
+    "build": "npm-run-all clean build:* copy:*"
   },
   "keywords": [],
   "author": "",
