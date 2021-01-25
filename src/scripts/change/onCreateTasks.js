@@ -1,4 +1,4 @@
-import { renderList } from "./render.js";
+import { renderList } from "../render/render.js";
 import { createTasksList } from "../gateway/tasksGateway.js";
 
 const createTasks = async () => {

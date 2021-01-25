@@ -1,6 +1,6 @@
-import { initCreateTasks } from "./onCreateTasks.js";
-import { initChangeTasks } from "./onChangeTasks.js";
-import { initDeleteButton } from "./onDeleteTasks.js";
+import { initCreateTasks } from "../change/onCreateTasks.js";
+import { initChangeTasks } from "../change/onChangeTasks.js";
+import { initDeleteButton } from "../change/onDeleteTasks.js";
 import { getTasksList } from "../gateway/tasksGateway.js";
 
 const allInit = () => {

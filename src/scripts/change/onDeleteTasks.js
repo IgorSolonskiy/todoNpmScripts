@@ -1,5 +1,5 @@
 import { deleteTasksList } from "../gateway/tasksGateway.js";
-import { renderList } from "./render.js";
+import { renderList } from "../render/render.js";
 
 const clickDeleteTasks = async (event) => {
   try {

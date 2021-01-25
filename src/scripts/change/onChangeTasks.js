@@ -1,4 +1,4 @@
-import { renderList } from "./render.js";
+import { renderList } from "../render/render.js";
 import { getTasksList, changeTasksList } from "../gateway/tasksGateway.js";
 
 const changeTasks = async (event) => {
@@ -8,7 +8,7 @@ const changeTasks = async (event) => {
     const arrayTasks = await getTasksList();
     const task = arrayTasks.find((item) => item.id === event.target.dataset.id);
 
-    await changeTasksList({ done: task.done !== 1 }, task.id);
+    await changeTasksList({ done: task.done !== true }, task.id);
     renderList();
   } catch (err) {
     alert(err.message);
