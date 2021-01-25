@@ -1,17 +1,18 @@
-import { renderElem } from "./render.js";
+import { renderList } from "./render.js";
 import { getTasksList, changeTasksList } from "../gateway/tasksGateway.js";
 
-const changeTasks = (event) => {
-  event.target.closest(".list-item").classList.toggle("list-item__done");
-  getTasksList().then((arrayTasks) => {
-    arrayTasks.forEach((item) => {
-      if (item.id !== event.target.dataset.id) return;
+const changeTasks = async (event) => {
+  try {
+    event.target.closest(".list-item").classList.toggle("list-item__done");
 
-      item.done === true
-        ? changeTasksList({ done: false }, item.id).then(() => renderElem())
-        : changeTasksList({ done: true }, item.id).then(() => renderElem());
-    });
-  });
+    const arrayTasks = await getTasksList();
+    const task = arrayTasks.find((item) => item.id === event.target.dataset.id);
+
+    await changeTasksList({ done: task.done ? false : true }, task.id);
+    renderList();
+  } catch (err) {
+    alert(err.message);
+  }
 };
 
 export const initChangeTasks = () => {
