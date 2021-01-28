@@ -1,3 +1,5 @@
+import "./common.scss";
+import "./todoList.scss";
 import { initCreateTasks } from "../change/onCreateTasks.js";
 import { initChangeTasks } from "../change/onChangeTasks.js";
 import { initDeleteButton } from "../change/onDeleteTasks.js";
