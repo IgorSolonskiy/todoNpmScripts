@@ -1,8 +1,8 @@
 import './index.scss';
+import './scripts/change/onCreateTasks';
+import './scripts/delegation/delegationList';
 import renderList from './scripts/render/renderTask';
-import initDelegation from './scripts/delegation/delegationTodo';
 
 document.addEventListener('DOMContentLoaded', () => {
-  initDelegation();
   renderList();
 });

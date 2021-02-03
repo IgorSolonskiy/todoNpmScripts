@@ -1,6 +1,9 @@
 import { createTasksList } from '../gateway/tasksGateway';
+import renderList from '../render/renderTask';
 
-export default async () => {
+const createBtn = document.querySelector('.btn');
+
+const createTasks = async () => {
   try {
     const inputTextElem = document.querySelector('.task-input');
 
@@ -14,7 +17,10 @@ export default async () => {
 
     await createTasksList(tasksData);
     inputTextElem.value = '';
+    renderList();
   } catch (err) {
     alert(err.message);
   }
 };
+
+createBtn.addEventListener('click', createTasks);
