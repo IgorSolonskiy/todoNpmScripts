@@ -1,15 +1,10 @@
 import './common.scss';
 import './todoList.scss';
-import initCreateTasks from '../change/onCreateTasks';
 import initChangeTasks from '../change/onChangeTasks';
 import initDeleteButton from '../change/onDeleteTasks';
 import { getTasksList } from '../gateway/tasksGateway';
 
-const allInit = () => {
-  initChangeTasks();
-  initCreateTasks();
-  initDeleteButton();
-};
+const composeInit = (...funcs) => funcs.map((func) => func());
 
 const renderElem = (listElem, elem) => {
   const listItemElem = document.createElement('li');
@@ -52,7 +47,7 @@ export default async () => {
       .sort((a, b) => a.done - b.done)
       .forEach((elem) => renderElem(listElem, elem));
 
-    allInit();
+    composeInit(initChangeTasks, initDeleteButton);
   } catch (err) {
     alert(err.message);
   }
