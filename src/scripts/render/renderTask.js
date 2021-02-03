@@ -1,12 +1,13 @@
 import './common.scss';
 import './todoList.scss';
-import initChangeTasks from '../change/onChangeTasks';
-import initDeleteButton from '../change/onDeleteTasks';
+import changeTasks from '../change/onChangeTasks';
+import deleteTasks from '../change/onDeleteTasks';
+import createTasks from '../change/onCreateTasks';
 import { getTasksList } from '../gateway/tasksGateway';
 
-const composeInit = (...funcs) => funcs.map((func) => func());
+const listElem = document.querySelector('.list');
 
-const renderElem = (listElem, elem) => {
+const renderElem = (elem) => {
   const listItemElem = document.createElement('li');
 
   listItemElem.classList.add('list-item');
@@ -36,19 +37,45 @@ const renderElem = (listElem, elem) => {
   listElem.append(listItemElem);
 };
 
-export default async () => {
+const renderList = async () => {
   try {
     const arrayTasks = await getTasksList();
-    const listElem = document.querySelector('.list');
 
     listElem.innerHTML = '';
     arrayTasks
       .sort((x, y) => new Date(x.createDate) - new Date(y.createDate))
       .sort((a, b) => a.done - b.done)
-      .forEach((elem) => renderElem(listElem, elem));
-
-    composeInit(initChangeTasks, initDeleteButton);
+      .forEach((elem) => renderElem(elem));
   } catch (err) {
     alert(err.message);
   }
+};
+
+const toDoElem = document.querySelector('.todo-list');
+
+const updateList = async (event) => {
+  const checkboxElem = event.target.closest('.list-item__checkbox');
+  const deleteBtn = event.target.closest('.list-item__btnDelete');
+  const createBtn = event.target.closest('.btn');
+
+  if (!checkboxElem && !deleteBtn && !createBtn) return;
+
+  if (checkboxElem) {
+    await changeTasks(checkboxElem);
+  }
+
+  if (deleteBtn) {
+    await deleteTasks(deleteBtn);
+  }
+
+  if (createBtn) {
+    await createTasks();
+  }
+
+  renderList();
+};
+
+export default () => {
+  toDoElem.addEventListener('click', updateList);
+  renderList();
 };

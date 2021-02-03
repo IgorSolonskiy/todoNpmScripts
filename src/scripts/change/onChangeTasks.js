@@ -1,24 +1,14 @@
-import renderItem from '../render/renderTask';
 import { getTasksList, changeTasksList } from '../gateway/tasksGateway';
 
-const changeTasks = async (event) => {
+export default async (tasks) => {
   try {
-    event.target.closest('.list-item').classList.toggle('list-item__done');
+    tasks.closest('.list-item').classList.toggle('list-item__done');
 
     const arrayTasks = await getTasksList();
-    const task = arrayTasks.find((item) => item.id === event.target.dataset.id);
+    const task = arrayTasks.find((item) => item.id === tasks.dataset.id);
 
     await changeTasksList({ done: task.done !== true }, task.id);
-    renderItem();
   } catch (err) {
     alert(err.message);
   }
-};
-
-export default () => {
-  const checkboxElem = Array.from(
-    document.querySelectorAll('.list-item__checkbox'),
-  );
-
-  checkboxElem.map((elem) => elem.addEventListener('click', changeTasks));
 };
