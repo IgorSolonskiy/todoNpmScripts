@@ -1,9 +1,9 @@
-import { renderList } from "../render/render.js";
-import { createTasksList } from "../gateway/tasksGateway.js";
+import { createTasksList } from '../gateway/tasksGateway';
+import renderTask from '../render/renderTask';
 
 const createTasks = async () => {
   try {
-    const inputTextElem = document.querySelector(".task-input");
+    const inputTextElem = document.querySelector('.task-input');
 
     if (!inputTextElem.value) return;
 
@@ -14,15 +14,15 @@ const createTasks = async () => {
     };
 
     await createTasksList(tasksData);
-    inputTextElem.value = "";
-    renderList();
+    inputTextElem.value = '';
+    renderTask();
   } catch (err) {
     alert(err.message);
   }
 };
 
-export const initCreateTasks = () => {
-  const btnElem = document.querySelector(".create-task-btn");
+export default () => {
+  const btnElem = document.querySelector('.create-task-btn');
 
-  btnElem.addEventListener("click", createTasks);
+  btnElem.addEventListener('click', createTasks);
 };

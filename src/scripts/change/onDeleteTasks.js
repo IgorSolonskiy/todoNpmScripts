@@ -1,5 +1,5 @@
-import { deleteTasksList } from "../gateway/tasksGateway.js";
-import { renderList } from "../render/render.js";
+import { deleteTasksList } from '../gateway/tasksGateway';
+import renderList from '../render/renderTask';
 
 const clickDeleteTasks = async (event) => {
   try {
@@ -10,10 +10,10 @@ const clickDeleteTasks = async (event) => {
   }
 };
 
-export const initDeleteButton = () => {
+export default () => {
   const btnArrayElem = Array.from(
-    document.querySelectorAll(".list-item__btnDelete")
+    document.querySelectorAll('.list-item__btnDelete'),
   );
 
-  btnArrayElem.map((elem) => elem.addEventListener("click", clickDeleteTasks));
+  btnArrayElem.map((elem) => elem.addEventListener('click', clickDeleteTasks));
 };

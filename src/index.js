@@ -1,8 +1,8 @@
-import "./index.scss";
-import { initCreateTasks } from "./scripts/change/onCreateTasks.js";
-import { renderList } from "./scripts/render/render.js";
+import './index.scss';
+import initCreateTasks from './scripts/change/onCreateTasks';
+import renderList from './scripts/render/renderTask';
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   initCreateTasks();
   renderList();
 });
